@@ -1,33 +1,78 @@
 .App {
+  display: flex;
+  justify-content: center;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.list {
+  width: 500px;
+  margin: 0 auto;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-wrap: wrap;
+  box-shadow: 2px 2px 20px 2px rgba(165, 165, 165, 0.358);
+  background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 8px;
 }
 
-.App-link {
-  color: #61dafb;
+.something {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+  margin: 15px 0;
+  box-shadow: 2px 2px 20px 2px rgba(165, 165, 165, 0.358);
+  font-size: 1rem;
+  border-radius: 8px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 100;
+  padding: 7px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.something button {
+  display: flex;
+  border: 1px solid rgba(131, 131, 131, 0.482);
+  justify-content: center;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  font-weight: 100;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-transform: uppercase;
+  margin: 10px;
+  width: 200px;
+  padding: 15px;
+  transition-duration: 1s;
+  background-image: linear-gradient(322deg, #d8cfcf00 3%, #3bfea3ac 74%);
+}
+
+.something {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 0 auto;
+}
+
+.FriendInfo {
+  box-shadow: 2px 2px 20px 2px rgba(165, 165, 165, 0.358);
+  background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  margin: 20px;
+  padding: 10px;
+  transition: 0.2s ease-in-out;
+  border-radius: 8px;
+  width: 500px;
+}
+
+.FriendInfo:hover {
+  transition: 0.2s ease-in-out;
+  box-shadow: 2px 2px 20px 2px rgba(142, 40, 40, 0.358);
+  margin: 10px;
+}
+
+.something p {
+  box-shadow: 2px 2px 20px 2px rgba(165, 165, 165, 0.358);
+  font-size: 1.5rem;
+  border-radius: 8px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 100;
+  padding-left: 10px;
 }

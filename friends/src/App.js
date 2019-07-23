@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import "./App.css";
-
-import axios from "axios";
+import { Route } from "react-router-dom";
 import FriendsList from "./component/FriendsList";
+import FriendInput from "./component/FriendInput";
+import axios from "axios";
+import "./App.css";
 
 class App extends Component {
   constructor(props) {
@@ -11,24 +12,59 @@ class App extends Component {
       friends: []
     };
   }
-
   componentDidMount() {
-    axios
-      .get("http://localhost:5000/friends")
-      .then(res => {
-        this.setState({ friends: res.data });
-      })
+    axios("http://localhost:5000/friends")
+      .then(res => this.setState({ friends: res.data }))
       .catch(err => {
-        console.log("Server Error", err);
+        throw new Error(err);
       });
   }
-
+  handleUpdateList = friends => {
+    this.setState({
+      friends
+    });
+  };
+  handleEditFriend = (name, age, email, id) => {
+    axios
+      .put(`http://localhost:5000/friends/${id}`, {
+        name,
+        age: Number(age),
+        email
+      })
+      .then(res => this.setState({ friends: res.data }))
+      .catch(err => {
+        console.log(err);
+      });
+  };
+  handleDeleteFriend = id => {
+    axios
+      .delete(`http://localhost:5000/friends/${id}`)
+      .then(res => this.setState({ friends: res.data }))
+      .catch(err => {
+        console.log(err);
+      });
+  };
   render() {
     return (
-      <div className="FriendsList">
-        {this.state.friends.map(friend => (
-          <FriendsList friend={friend} key={friend.id} />
-        ))}
+      <div className="App">
+        <Route
+          exact
+          path="/"
+          render={props => (
+            <FriendsList
+              {...props}
+              friends={this.state.friends}
+              deleteFriend={this.handleDeleteFriend}
+              editFriend={this.handleEditFriend}
+            />
+          )}
+        />
+        <Route
+          path="/add"
+          render={props => (
+            <FriendInput {...props} updateList={this.handleUpdateList} />
+          )}
+        />
       </div>
     );
   }
